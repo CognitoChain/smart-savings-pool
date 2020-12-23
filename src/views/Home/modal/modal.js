@@ -7,6 +7,9 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 const styles = (theme) => ({
   root: {
@@ -60,8 +63,8 @@ const CustomizedDialog = (props) => {
           <label
             for="Value"
             style={{
-              color: "rgb(0, 202, 157)",
-              fontWeight: "100",
+              color: "#6B9196",
+              fontWeight: "500",
               fontSize: "16px",
             }}
           >
@@ -85,12 +88,12 @@ const CustomizedDialog = (props) => {
           <label
             for="Stats"
             style={{
-              color: "rgb(0, 202, 157)",
-              fontWeight: "100",
+              color: "#6B9196",
+              fontWeight: "500",
               fontSize: "16px",
             }}
           >
-            Stats
+            Slots
           </label>
           <br />
           <input
@@ -111,53 +114,54 @@ const CustomizedDialog = (props) => {
               <label
                 for="Value"
                 style={{
-                  color: "rgb(0, 202, 157)",
-                  fontWeight: "100",
+                  color: "#6B9196",
+                  fontWeight: "500",
                   fontSize: "16px",
                 }}
               >
-                Fund Value
+                Frequency
               </label>
               <br />
-              <input
-                type="text"
-                id="Value"
-                name="Value"
-                style={{
-                  width: "100%",
-                  padding: "12px 20px",
-                  margin: "8px 0",
-                  display: "inline-block",
-                  border: "1px solid #ccc",
-                  boxSizing: "border-box",
-                }}
-              />
+              <FormControl
+                variant="outlined"
+                style={{ minWidth: "200px", marginTop: "7px" }}
+              >
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                >
+                  <MenuItem value={10}>Weekly</MenuItem>
+                  <MenuItem value={20}>Monthly</MenuItem>
+                  <MenuItem value={30}>Yearly</MenuItem>
+                </Select>
+              </FormControl>
             </div>
             <div>
               <label
                 for="Value"
                 style={{
-                  color: "rgb(0, 202, 157)",
-                  fontWeight: "100",
+                  color: "#6B9196",
+                  fontWeight: "500",
                   fontSize: "16px",
                 }}
               >
-                Fund Value
+                Tenure
               </label>
               <br />
-              <input
-                type="text"
-                id="Value"
-                name="Value"
-                style={{
-                  width: "100%",
-                  padding: "12px 20px",
-                  margin: "8px 0",
-                  display: "inline-block",
-                  border: "1px solid #ccc",
-                  boxSizing: "border-box",
-                }}
-              />
+              <FormControl
+                variant="outlined"
+                style={{ minWidth: "200px", marginTop: "7px" }}
+              >
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                >
+                  <MenuItem value={10}>3 Months</MenuItem>
+                  <MenuItem value={20}>6 Months</MenuItem>
+                  <MenuItem value={30}>12 Months</MenuItem>
+                  <MenuItem value={30}>24 Months</MenuItem>
+                </Select>
+              </FormControl>
             </div>
           </div>
           <div
@@ -174,7 +178,7 @@ const CustomizedDialog = (props) => {
                 background: "#00CA9D",
                 color: "white",
                 padding: " 8px 40px",
-                margin: " 8px 0",
+                margin: "15px 0",
                 border: "none",
                 cursor: "pointer",
               }}
