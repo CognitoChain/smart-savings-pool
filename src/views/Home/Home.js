@@ -10,6 +10,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { CustomizedDialog } from "./modal";
+import { connectWeb3 } from "../../utils/contract";
 
 const useStyles = makeStyles((theme) => ({
   topbar: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     background: "linear-gradient(180deg, #0C0E41 0%, #324E75 100%)",
   },
   LogoutBtn: {
-    background: "linear-gradient(180deg, #0C0E41 0%, #324E75 100%)",
+    background: "linear-gradient(5deg, #0C0E41 65%, #324E75 124%);",
     color: "#04dc04",
     border: "1px solid #04dc04",
     padding: "8px 40px",
@@ -73,6 +74,16 @@ const useStyles = makeStyles((theme) => ({
     height: "35px",
     color: "#FFFFFF",
   },
+  connectBtn: {
+    color: "#E2DEDE",
+    fontWeight: "600",
+    fontSize: "18px",
+    lineHeight: "24px",
+    cursor: "pointer",
+    "& :active": {
+      transform: "scale(1.5)",
+    },
+  },
 }));
 
 const Home = () => {
@@ -92,11 +103,17 @@ const Home = () => {
     },
   ];
   const [open, setOpen] = React.useState(false);
+  const [isWalletConnected, setWalletConnection] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+  };
+  const connectWallet = () => {
+    connectWeb3().then((data) => {
+      setWalletConnection(data.connection);
+    });
   };
   return (
     <React.Fragment>
@@ -109,7 +126,13 @@ const Home = () => {
             >
               <img src="./Cognitochain.png" alt="logo" />
               <span className={classes.Logout}>
-                <button className={classes.LogoutBtn}>Log Out</button>
+                {isWalletConnected ? (
+                  <button className={classes.LogoutBtn}>Log Out</button>
+                ) : (
+                  <span className={classes.connectBtn} onClick={connectWallet}>
+                    Connect Wallet
+                  </span>
+                )}
               </span>
             </Typography>
             <div className={classes.abc}>
